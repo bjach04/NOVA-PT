@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}Telehealth — NOVA PT{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <div class="text-center mb-4">
+                <h2 class="text-navy">Telehealth Consultations</h2>
+                <p class="lead text-muted">Connect with a licensed physical therapist from the comfort of your home.</p>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-body p-4">
+                    <div class="row g-4 text-center mb-4">
+                        <div class="col-md-4">
+                            <i class="bi bi-camera-video text-teal" style="font-size: 2rem;"></i>
+                            <h6 class="mt-2 text-navy">Video Consultations</h6>
+                            <p class="text-muted small">Face-to-face sessions with your PT via secure video call.</p>
+                        </div>
+                        <div class="col-md-4">
+                            <i class="bi bi-clipboard2-check text-teal" style="font-size: 2rem;"></i>
+                            <h6 class="mt-2 text-navy">Exercise Review</h6>
+                            <p class="text-muted small">Get real-time feedback on your exercise form and technique.</p>
+                        </div>
+                        <div class="col-md-4">
+                            <i class="bi bi-calendar-check text-teal" style="font-size: 2rem;"></i>
+                            <h6 class="mt-2 text-navy">Flexible Scheduling</h6>
+                            <p class="text-muted small">Book appointments that fit your schedule, including evenings.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header bg-teal text-center">
+                    <h5 class="mb-0 text-white">Schedule Your Appointment</h5>
+                </div>
+                <div class="card-body p-0">
+                    <div class="calendly-embed">
+                        <iframe src="{{ calendly_url }}"
+                                width="100%"
+                                height="650"
+                                frameborder="0"
+                                title="Schedule a telehealth appointment"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

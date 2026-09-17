@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About — NOVA PT{% endblock %}
+
+{% block content %}
+<section class="hero-section text-center" style="padding: 3rem 0;">
+    <div class="container">
+        <img src="{% static 'images/logo.png' %}" alt="NOVA PT" height="80" class="mb-3">
+        <h1>About NOVA PT</h1>
+        <p class="lead">Personalized recovery tools, powered by expertise.</p>
+    </div>
+</section>
+
+<div class="container py-5" style="max-width: 800px;">
+    <div class="card mb-4">
+        <div class="card-body p-4">
+            <h3 class="text-navy">Our Mission</h3>
+            <p>NOVA Physical Therapy & Solutions was created to bridge the gap between clinical physical therapy and at-home recovery. We believe that everyone deserves access to high-quality, personalized rehabilitation tools — regardless of where they are in their recovery journey.</p>
+            <p>Our platform provides exercise recommendations tailored to your specific diagnosis, pain level, and recovery phase. Every piece of content is reviewed by licensed physical therapists and medical professionals to ensure accuracy and safety.</p>
+        </div>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-body p-4">
+            <h3 class="text-navy">What We Offer</h3>
+            <div class="row g-3 mt-2">
+                <div class="col-md-6">
+                    <h6 class="text-teal"><i class="bi bi-clipboard2-pulse me-1"></i> Exercise Library</h6>
+                    <p class="text-muted small">Hundreds of exercises organized by diagnosis, recovery phase, and difficulty level.</p>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="text-teal"><i class="bi bi-question-circle me-1"></i> Expert FAQ</h6>
+                    <p class="text-muted small">Answers from licensed PTs and MDs about common recovery questions.</p>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="text-teal"><i class="bi bi-geo-alt me-1"></i> Facility Finder</h6>
+                    <p class="text-muted small">Find PT clinics near you that accept your insurance.</p>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="text-teal"><i class="bi bi-camera-video me-1"></i> Telehealth</h6>
+                    <p class="text-muted small">Schedule virtual consultations with physical therapists.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body p-4">
+            <h3 class="text-navy">Disclaimer</h3>
+            <p class="text-muted small">The information provided on NOVA PT is for educational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. Always consult with a qualified healthcare provider before starting any exercise program, especially if you have had surgery or are experiencing significant pain. The exercises and information on this platform have been reviewed by licensed professionals, but individual results may vary.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

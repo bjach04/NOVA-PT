@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block title %}Exercise Library — NOVA PT{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <h2 class="text-navy mb-4">Exercise Library</h2>
+
+    <div class="row">
+        <!-- Filter Sidebar -->
+        <div class="col-lg-3 mb-4">
+            <div class="card filter-sidebar">
+                <div class="card-header bg-teal">
+                    <h6 class="mb-0 text-white">Filters</h6>
+                </div>
+                <div class="card-body">
+                    <form method="get">
+                        <div class="mb-3">
+                            <label class="form-label">Diagnosis</label>
+                            <select name="diagnosis" class="form-select">
+                                <option value="">All Diagnoses</option>
+                                {% for d in diagnoses %}
+                                <option value="{{ d.slug }}" {% if selected_diagnosis == d.slug %}selected{% endif %}>
+                                    {{ d.name }}
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Phase</label>
+                            <select name="phase" class="form-select">
+                                <option value="">All Phases</option>
+                                {% for value, label in phases %}
+                                <option value="{{ value }}" {% if selected_phase == value %}selected{% endif %}>
+                                    {{ label }}
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">
+                                Pain Level: <span id="filter-pain-value" class="badge bg-teal">{{ selected_pain }}</span>
+                            </label>
+                            <input type="range" name="pain" id="filter-pain"
+                                   class="form-range pain-slider"
+                                   min="1" max="10" value="{{ selected_pain }}">
+                        </div>
+                        <button type="submit" class="btn btn-teal w-100">Apply Filters</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Exercise Grid -->
+        <div class="col-lg-9">
+            {% if exercises %}
+            <div class="row g-3">
+                {% for exercise in exercises %}
+                <div class="col-md-6 col-lg-4">
+                    <div class="card exercise-card h-100">
+                        {% if exercise.image %}
+                        <img src="{{ exercise.image.url }}" class="card-img-top" alt="{{ exercise.title }}" style="height:160px;object-fit:cover;">
+                        {% endif %}
+                        <div class="card-body">
+                            <div class="mb-2">
+                                <span class="badge bg-teal">{{ exercise.get_phase_display }}</span>
+                                <span class="badge bg-navy">{{ exercise.get_difficulty_display }}</span>
+                            </div>
+                            <h6 class="card-title">{{ exercise.title }}</h6>
+                            <p class="card-text text-muted small">{{ exercise.description|truncatewords:15 }}</p>
+                            <p class="small mb-0">
+                                <strong>{{ exercise.sets }} sets × {{ exercise.reps }}</strong>
+                            </p>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <a href="{% url 'exercises:detail' exercise.pk %}" class="btn btn-sm btn-teal w-100">View</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <div class="card">
+                <div class="card-body text-center py-5">
+                    <i class="bi bi-clipboard2-pulse text-muted" style="font-size: 3rem;"></i>
+                    <h5 class="mt-3 text-muted">No exercises match your filters</h5>
+                    <p class="text-muted">Try adjusting your filter criteria.</p>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

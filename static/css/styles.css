@@ -1,0 +1,234 @@
+:root {
+    --navy: #0B1D3A;
+    --teal: #1A8A8A;
+    --gold: #D4A843;
+    --light-gray: #F5F7FA;
+    --navy-light: #132d55;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--light-gray);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+}
+
+/* Navbar */
+.bg-navy {
+    background-color: var(--navy) !important;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.85);
+    transition: color 0.2s;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: var(--gold);
+}
+
+/* Buttons */
+.btn-teal {
+    background-color: var(--teal);
+    border-color: var(--teal);
+    color: #fff;
+}
+
+.btn-teal:hover {
+    background-color: #157272;
+    border-color: #157272;
+    color: #fff;
+}
+
+.btn-gold {
+    background-color: var(--gold);
+    border-color: var(--gold);
+    color: var(--navy);
+    font-weight: 600;
+}
+
+.btn-gold:hover {
+    background-color: #c49a3a;
+    border-color: #c49a3a;
+    color: var(--navy);
+}
+
+.btn-navy {
+    background-color: var(--navy);
+    border-color: var(--navy);
+    color: #fff;
+}
+
+.btn-navy:hover {
+    background-color: var(--navy-light);
+    border-color: var(--navy-light);
+    color: #fff;
+}
+
+/* Text colors */
+.text-navy {
+    color: var(--navy) !important;
+}
+
+.text-teal {
+    color: var(--teal) !important;
+}
+
+.text-gold {
+    color: var(--gold) !important;
+}
+
+.text-light-muted {
+    color: rgba(255, 255, 255, 0.6) !important;
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    color: #fff;
+    padding: 5rem 0;
+}
+
+.hero-section h1 {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.hero-section .lead {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* Cards */
+.card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+}
+
+.card-header.bg-teal {
+    background-color: var(--teal) !important;
+    color: #fff;
+    border-radius: 12px 12px 0 0 !important;
+}
+
+/* Feature cards on home page */
+.feature-card {
+    text-align: center;
+    padding: 2rem;
+}
+
+.feature-card .bi {
+    font-size: 2.5rem;
+    color: var(--teal);
+    margin-bottom: 1rem;
+}
+
+/* Exercise cards */
+.exercise-card .badge {
+    font-size: 0.75rem;
+}
+
+/* FAQ Accordion */
+.accordion-button:not(.collapsed) {
+    background-color: rgba(26, 138, 138, 0.1);
+    color: var(--navy);
+}
+
+.accordion-button:focus {
+    box-shadow: 0 0 0 0.2rem rgba(26, 138, 138, 0.25);
+}
+
+/* Forms */
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--teal);
+    box-shadow: 0 0 0 0.2rem rgba(26, 138, 138, 0.25);
+}
+
+/* Auth pages */
+.auth-container {
+    max-width: 450px;
+    margin: 3rem auto;
+}
+
+/* Pain level slider */
+.pain-slider {
+    accent-color: var(--teal);
+}
+
+/* Filter sidebar */
+.filter-sidebar .form-label {
+    font-weight: 600;
+    color: var(--navy);
+}
+
+/* Profile page */
+.profile-header {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--teal) 100%);
+    color: #fff;
+    padding: 3rem 0;
+    border-radius: 0 0 20px 20px;
+}
+
+/* Merch cards */
+.merch-card .card-img-top {
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px 12px 0 0;
+}
+
+/* Badge variants */
+.badge.bg-teal {
+    background-color: var(--teal) !important;
+}
+
+.badge.bg-gold {
+    background-color: var(--gold) !important;
+    color: var(--navy);
+}
+
+.badge.bg-navy {
+    background-color: var(--navy) !important;
+}
+
+/* Dashboard stat cards */
+.stat-card {
+    border-left: 4px solid var(--teal);
+    padding: 1.5rem;
+}
+
+.stat-card .stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--navy);
+}
+
+/* Telehealth section */
+.calendly-embed {
+    min-height: 650px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 3rem 0;
+    }
+
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+}

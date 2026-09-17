@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block title %}Find a PT — NOVA PT{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <h2 class="text-navy mb-4">Find a Physical Therapy Clinic</h2>
+
+    <!-- Search Form -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <form method="get" class="row g-3 align-items-end">
+                <div class="col-md-4">
+                    <label class="form-label fw-semibold">Zip Code</label>
+                    <input type="text" name="zip" class="form-control" placeholder="Enter zip code"
+                           value="{{ zip_code }}" maxlength="10">
+                </div>
+                <div class="col-md-5">
+                    <label class="form-label fw-semibold">Insurance Provider</label>
+                    <select name="insurance" class="form-select">
+                        <option value="">Any Insurance</option>
+                        {% for p in providers %}
+                        <option value="{{ p.slug }}" {% if selected_insurance == p.slug %}selected{% endif %}>
+                            {{ p.name }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <button type="submit" class="btn btn-teal w-100">
+                        <i class="bi bi-search me-1"></i> Search
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Results -->
+    {% if facilities is not None %}
+        {% if facilities %}
+        <p class="text-muted mb-3">Found {{ facilities|length }} clinic{{ facilities|length|pluralize }} matching your search.</p>
+        <div class="row g-3">
+            {% for facility in facilities %}
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="text-navy">{{ facility.name }}</h5>
+                        <p class="mb-1">
+                            <i class="bi bi-geo-alt text-teal me-1"></i>
+                            {{ facility.address }}<br>
+                            {{ facility.city }}, {{ facility.state }} {{ facility.zip_code }}
+                        </p>
+                        <p class="mb-1">
+                            <i class="bi bi-telephone text-teal me-1"></i>
+                            {{ facility.phone }}
+                        </p>
+                        {% if facility.website %}
+                        <p class="mb-2">
+                            <i class="bi bi-globe text-teal me-1"></i>
+                            <a href="{{ facility.website }}" target="_blank" class="text-teal">Visit Website</a>
+                        </p>
+                        {% endif %}
+                        <div>
+                            <small class="text-muted">Accepts:</small><br>
+                            {% for ins in facility.insurance_accepted.all %}
+                            <span class="badge bg-light text-navy me-1 mb-1">{{ ins.name }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="card">
+            <div class="card-body text-center py-5">
+                <i class="bi bi-geo-alt text-muted" style="font-size: 3rem;"></i>
+                <h5 class="mt-3 text-muted">No clinics found</h5>
+                <p class="text-muted">Try a different zip code or insurance provider.</p>
+            </div>
+        </div>
+        {% endif %}
+    {% else %}
+    <div class="card">
+        <div class="card-body text-center py-5">
+            <i class="bi bi-search text-teal" style="font-size: 3rem;"></i>
+            <h5 class="mt-3 text-navy">Search for PT clinics near you</h5>
+            <p class="text-muted">Enter your zip code and/or select your insurance provider to find nearby physical therapy facilities.</p>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

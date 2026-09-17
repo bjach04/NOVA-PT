@@ -1,0 +1,29 @@
+{% load static %}
+<footer class="bg-navy text-light mt-5 py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <h5 class="text-gold">NOVA Physical Therapy & Solutions</h5>
+                <p class="text-light-muted">Personalized recovery tools to help you get back to doing what you love.</p>
+            </div>
+            <div class="col-md-4 mb-3">
+                <h6 class="text-gold">Quick Links</h6>
+                <ul class="list-unstyled">
+                    <li><a href="{% url 'exercises:list' %}" class="text-light-muted text-decoration-none">Exercises</a></li>
+                    <li><a href="{% url 'faq:list' %}" class="text-light-muted text-decoration-none">FAQ</a></li>
+                    <li><a href="{% url 'finder:search' %}" class="text-light-muted text-decoration-none">Find a PT</a></li>
+                    <li><a href="{% url 'pages:telehealth' %}" class="text-light-muted text-decoration-none">Telehealth</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4 mb-3">
+                <h6 class="text-gold">About</h6>
+                <ul class="list-unstyled">
+                    <li><a href="{% url 'pages:about' %}" class="text-light-muted text-decoration-none">About NOVA PT</a></li>
+                    <li><a href="{% url 'pages:merch' %}" class="text-light-muted text-decoration-none">Merch</a></li>
+                </ul>
+            </div>
+        </div>
+        <hr class="border-secondary">
+        <p class="text-center text-light-muted mb-0">&copy; 2026 NOVA Physical Therapy & Solutions. All rights reserved.</p>
+    </div>
+</footer>

@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}My Profile — NOVA PT{% endblock %}
+
+{% block content %}
+<div class="profile-header mb-4">
+    <div class="container text-center">
+        <i class="bi bi-person-circle" style="font-size: 4rem;"></i>
+        <h2 class="mt-2">{{ user.first_name }} {{ user.last_name }}</h2>
+        <p class="mb-0">@{{ user.username }}</p>
+    </div>
+</div>
+
+<div class="container" style="max-width: 700px;">
+    <div class="card">
+        <div class="card-body p-4">
+            <h5 class="text-navy mb-3">Profile Details</h5>
+            <table class="table table-borderless">
+                <tr>
+                    <td class="fw-semibold text-muted" style="width: 40%;">Email</td>
+                    <td>{{ user.email }}</td>
+                </tr>
+                <tr>
+                    <td class="fw-semibold text-muted">Diagnosis</td>
+                    <td>{{ profile.diagnosis|default:"Not set" }}</td>
+                </tr>
+                <tr>
+                    <td class="fw-semibold text-muted">PT Status</td>
+                    <td>{{ profile.get_pt_status_display }}</td>
+                </tr>
+                {% if profile.current_facility %}
+                <tr>
+                    <td class="fw-semibold text-muted">Current Facility</td>
+                    <td>{{ profile.current_facility }}</td>
+                </tr>
+                {% endif %}
+                <tr>
+                    <td class="fw-semibold text-muted">Had Surgery</td>
+                    <td>{{ profile.had_surgery|yesno:"Yes,No" }}</td>
+                </tr>
+                {% if profile.surgery_date %}
+                <tr>
+                    <td class="fw-semibold text-muted">Surgery Date</td>
+                    <td>{{ profile.surgery_date }}</td>
+                </tr>
+                {% endif %}
+                <tr>
+                    <td class="fw-semibold text-muted">Pain Level</td>
+                    <td><span class="badge bg-teal">{{ profile.pain_level }} / 10</span></td>
+                </tr>
+            </table>
+            <a href="{% url 'accounts:questionnaire' %}" class="btn btn-teal">Update Questionnaire</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

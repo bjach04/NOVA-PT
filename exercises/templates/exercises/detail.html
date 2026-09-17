@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ exercise.title }} — NOVA PT{% endblock %}
+
+{% block content %}
+<div class="container py-4" style="max-width: 800px;">
+    <nav aria-label="breadcrumb" class="mb-3">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'exercises:list' %}" class="text-teal">Exercises</a></li>
+            <li class="breadcrumb-item active">{{ exercise.title }}</li>
+        </ol>
+    </nav>
+
+    <div class="card mb-4">
+        {% if exercise.image %}
+        <img src="{{ exercise.image.url }}" class="card-img-top" alt="{{ exercise.title }}" style="max-height: 350px; object-fit: cover;">
+        {% endif %}
+        <div class="card-body p-4">
+            <div class="mb-3">
+                <span class="badge bg-teal">{{ exercise.get_phase_display }}</span>
+                <span class="badge bg-navy">{{ exercise.get_difficulty_display }}</span>
+                <span class="badge bg-gold">{{ exercise.diagnosis }}</span>
+                <span class="badge bg-secondary">Pain {{ exercise.pain_level_min }}–{{ exercise.pain_level_max }}</span>
+            </div>
+            <h3 class="text-navy">{{ exercise.title }}</h3>
+            <p class="lead">{{ exercise.description }}</p>
+
+            <div class="row mt-4">
+                <div class="col-sm-4">
+                    <div class="stat-card bg-white rounded">
+                        <div class="text-muted small">Sets</div>
+                        <div class="stat-number">{{ exercise.sets }}</div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="stat-card bg-white rounded">
+                        <div class="text-muted small">Reps</div>
+                        <div class="stat-number">{{ exercise.reps }}</div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="stat-card bg-white rounded">
+                        <div class="text-muted small">Difficulty</div>
+                        <div class="stat-number" style="font-size:1.2rem;">{{ exercise.get_difficulty_display }}</div>
+                    </div>
+                </div>
+            </div>
+
+            {% if exercise.video_url %}
+            <div class="mt-4">
+                <h5 class="text-navy">Video Demonstration</h5>
+                <div class="ratio ratio-16x9">
+                    <iframe src="{{ exercise.video_url }}" allowfullscreen></iframe>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    {% if related %}
+    <h5 class="text-navy mb-3">Related Exercises</h5>
+    <div class="row g-3">
+        {% for ex in related %}
+        <div class="col-md-6">
+            <div class="card h-100">
+                <div class="card-body">
+                    <span class="badge bg-navy mb-2">{{ ex.get_difficulty_display }}</span>
+                    <h6>{{ ex.title }}</h6>
+                    <p class="text-muted small mb-0">{{ ex.description|truncatewords:15 }}</p>
+                </div>
+                <div class="card-footer bg-transparent">
+                    <a href="{% url 'exercises:detail' ex.pk %}" class="btn btn-sm btn-teal">View</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

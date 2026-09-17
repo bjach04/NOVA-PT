@@ -1,0 +1,56 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-navy">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="{% url 'pages:home' %}">
+            <img src="{% static 'images/logo.png' %}" alt="NOVA PT" height="40" class="me-2">
+            <span class="fw-bold">NOVA PT</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'pages:home' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'exercises:list' %}">Exercises</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'faq:list' %}">FAQ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'finder:search' %}">Find a PT</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'pages:telehealth' %}">Telehealth</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'pages:merch' %}">Merch</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+                {% if user.is_authenticated %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        <i class="bi bi-person-circle"></i> {{ user.username }}
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="{% url 'accounts:profile' %}">My Profile</a></li>
+                        <li><a class="dropdown-item" href="{% url 'accounts:questionnaire' %}">Questionnaire</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="{% url 'accounts:logout' %}">Logout</a></li>
+                    </ul>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'accounts:login' %}">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-gold btn-sm ms-2 px-3" href="{% url 'accounts:signup' %}">Sign Up</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
