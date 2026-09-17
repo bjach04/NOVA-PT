@@ -3,53 +3,47 @@
 {% block title %}{{ exercise.title }} — NOVA PT{% endblock %}
 
 {% block content %}
-<div class="container py-4" style="max-width: 800px;">
-    <nav aria-label="breadcrumb" class="mb-3">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{% url 'exercises:list' %}" class="text-teal">Exercises</a></li>
-            <li class="breadcrumb-item active">{{ exercise.title }}</li>
+<div class="container py-5" style="max-width: 850px;">
+    <nav aria-label="breadcrumb" class="mb-4 fade-up">
+        <ol class="breadcrumb" style="font-size:0.9rem;">
+            <li class="breadcrumb-item"><a href="{% url 'exercises:list' %}" class="text-teal text-decoration-none">Exercises</a></li>
+            <li class="breadcrumb-item active text-muted">{{ exercise.title }}</li>
         </ol>
     </nav>
 
-    <div class="card mb-4">
+    <div class="card mb-4 fade-up" style="border:none; box-shadow:var(--shadow-lg); overflow:hidden;">
         {% if exercise.image %}
-        <img src="{{ exercise.image.url }}" class="card-img-top" alt="{{ exercise.title }}" style="max-height: 350px; object-fit: cover;">
+        <img src="{{ exercise.image.url }}" class="card-img-top" alt="{{ exercise.title }}" style="max-height: 380px; object-fit: cover;">
         {% endif %}
-        <div class="card-body p-4">
-            <div class="mb-3">
-                <span class="badge bg-teal">{{ exercise.get_phase_display }}</span>
-                <span class="badge bg-navy">{{ exercise.get_difficulty_display }}</span>
-                <span class="badge bg-gold">{{ exercise.diagnosis }}</span>
-                <span class="badge bg-secondary">Pain {{ exercise.pain_level_min }}–{{ exercise.pain_level_max }}</span>
+        <div class="card-body p-4 p-md-5">
+            <div class="mb-3 d-flex flex-wrap gap-2">
+                <span class="badge bg-teal" style="padding:0.4rem 0.8rem;">{{ exercise.get_phase_display }}</span>
+                <span class="badge bg-navy" style="padding:0.4rem 0.8rem;">{{ exercise.get_difficulty_display }}</span>
+                <span class="badge bg-gold" style="padding:0.4rem 0.8rem;">{{ exercise.diagnosis }}</span>
+                <span class="badge bg-secondary" style="padding:0.4rem 0.8rem;">Pain {{ exercise.pain_level_min }}–{{ exercise.pain_level_max }}</span>
             </div>
-            <h3 class="text-navy">{{ exercise.title }}</h3>
-            <p class="lead">{{ exercise.description }}</p>
+            <h2 class="text-navy" style="font-family:'Playfair Display',serif; font-size:2rem;">{{ exercise.title }}</h2>
+            <p class="lead text-muted" style="font-size:1.05rem; line-height:1.75;">{{ exercise.description }}</p>
 
-            <div class="row mt-4">
-                <div class="col-sm-4">
-                    <div class="stat-card bg-white rounded">
-                        <div class="text-muted small">Sets</div>
-                        <div class="stat-number">{{ exercise.sets }}</div>
-                    </div>
+            <div class="stat-strip mt-4">
+                <div class="stat-item">
+                    <div class="stat-number">{{ exercise.sets }}</div>
+                    <div class="stat-label">Sets</div>
                 </div>
-                <div class="col-sm-4">
-                    <div class="stat-card bg-white rounded">
-                        <div class="text-muted small">Reps</div>
-                        <div class="stat-number">{{ exercise.reps }}</div>
-                    </div>
+                <div class="stat-item">
+                    <div class="stat-number" style="font-size:1.5rem;">{{ exercise.reps }}</div>
+                    <div class="stat-label">Reps</div>
                 </div>
-                <div class="col-sm-4">
-                    <div class="stat-card bg-white rounded">
-                        <div class="text-muted small">Difficulty</div>
-                        <div class="stat-number" style="font-size:1.2rem;">{{ exercise.get_difficulty_display }}</div>
-                    </div>
+                <div class="stat-item">
+                    <div class="stat-number" style="font-size:1.1rem;">{{ exercise.get_difficulty_display }}</div>
+                    <div class="stat-label">Difficulty</div>
                 </div>
             </div>
 
             {% if exercise.video_url %}
-            <div class="mt-4">
-                <h5 class="text-navy">Video Demonstration</h5>
-                <div class="ratio ratio-16x9">
+            <div class="mt-5">
+                <h5 class="text-navy mb-3"><i class="bi bi-play-circle me-2 text-teal"></i>Video Demonstration</h5>
+                <div class="ratio ratio-16x9" style="border-radius:var(--radius-md); overflow:hidden; box-shadow:var(--shadow-md);">
                     <iframe src="{{ exercise.video_url }}" allowfullscreen></iframe>
                 </div>
             </div>
@@ -58,18 +52,18 @@
     </div>
 
     {% if related %}
-    <h5 class="text-navy mb-3">Related Exercises</h5>
+    <h5 class="text-navy mb-3 fade-up">Related Exercises</h5>
     <div class="row g-3">
         {% for ex in related %}
-        <div class="col-md-6">
+        <div class="col-md-6 fade-up">
             <div class="card h-100">
                 <div class="card-body">
                     <span class="badge bg-navy mb-2">{{ ex.get_difficulty_display }}</span>
-                    <h6>{{ ex.title }}</h6>
+                    <h6 class="text-navy">{{ ex.title }}</h6>
                     <p class="text-muted small mb-0">{{ ex.description|truncatewords:15 }}</p>
                 </div>
-                <div class="card-footer bg-transparent">
-                    <a href="{% url 'exercises:detail' ex.pk %}" class="btn btn-sm btn-teal">View</a>
+                <div class="card-footer bg-transparent" style="border-top:1px solid var(--border-color);">
+                    <a href="{% url 'exercises:detail' ex.pk %}" class="btn btn-sm btn-teal">View Details</a>
                 </div>
             </div>
         </div>

@@ -4,52 +4,101 @@
 {% block title %}About — NOVA PT{% endblock %}
 
 {% block content %}
-<section class="hero-section text-center" style="padding: 3rem 0;">
+<section class="page-header text-center">
     <div class="container">
-        <img src="{% static 'images/logo.png' %}" alt="NOVA PT" height="80" class="mb-3">
+        <img src="{% static 'images/logo.png' %}" alt="NOVA PT" height="60" class="mb-3" style="opacity:0.9;">
         <h1>About NOVA PT</h1>
-        <p class="lead">Personalized recovery tools, powered by expertise.</p>
+        <p>Personalized recovery tools, powered by expertise.</p>
     </div>
 </section>
 
-<div class="container py-5" style="max-width: 800px;">
-    <div class="card mb-4">
-        <div class="card-body p-4">
-            <h3 class="text-navy">Our Mission</h3>
-            <p>NOVA Physical Therapy & Solutions was created to bridge the gap between clinical physical therapy and at-home recovery. We believe that everyone deserves access to high-quality, personalized rehabilitation tools — regardless of where they are in their recovery journey.</p>
-            <p>Our platform provides exercise recommendations tailored to your specific diagnosis, pain level, and recovery phase. Every piece of content is reviewed by licensed physical therapists and medical professionals to ensure accuracy and safety.</p>
+<!-- Mission with Image -->
+<section class="split-section">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6 fade-left">
+                <img src="{% static 'images/hero-pt-band.jpg' %}" alt="Physical therapist guiding patient with resistance band" class="split-image">
+            </div>
+            <div class="col-lg-6 fade-right">
+                <span class="section-tag">Our Mission</span>
+                <h2>Bridging Clinical Care and At-Home Recovery</h2>
+                <p class="section-desc">NOVA Physical Therapy & Solutions was created to bridge the gap between clinical physical therapy and at-home recovery. We believe that everyone deserves access to high-quality, personalized rehabilitation tools &mdash; regardless of where they are in their recovery journey.</p>
+                <p class="section-desc">Our platform provides exercise recommendations tailored to your specific diagnosis, pain level, and recovery phase. Every piece of content is reviewed by licensed physical therapists and medical professionals to ensure accuracy and safety.</p>
+            </div>
         </div>
     </div>
+</section>
 
-    <div class="card mb-4">
-        <div class="card-body p-4">
-            <h3 class="text-navy">What We Offer</h3>
-            <div class="row g-3 mt-2">
-                <div class="col-md-6">
-                    <h6 class="text-teal"><i class="bi bi-clipboard2-pulse me-1"></i> Exercise Library</h6>
-                    <p class="text-muted small">Hundreds of exercises organized by diagnosis, recovery phase, and difficulty level.</p>
-                </div>
-                <div class="col-md-6">
-                    <h6 class="text-teal"><i class="bi bi-question-circle me-1"></i> Expert FAQ</h6>
-                    <p class="text-muted small">Answers from licensed PTs and MDs about common recovery questions.</p>
-                </div>
-                <div class="col-md-6">
-                    <h6 class="text-teal"><i class="bi bi-geo-alt me-1"></i> Facility Finder</h6>
-                    <p class="text-muted small">Find PT clinics near you that accept your insurance.</p>
-                </div>
-                <div class="col-md-6">
-                    <h6 class="text-teal"><i class="bi bi-camera-video me-1"></i> Telehealth</h6>
-                    <p class="text-muted small">Schedule virtual consultations with physical therapists.</p>
+<!-- What We Offer -->
+<section class="split-section bg-alt">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6 order-lg-2 fade-right">
+                <img src="{% static 'images/hero-pt-session.jpg' %}" alt="PT working with patient on exercise table" class="split-image">
+            </div>
+            <div class="col-lg-6 order-lg-1 fade-left">
+                <span class="section-tag">What We Offer</span>
+                <h2>Tools Built for Your Recovery</h2>
+                <div class="row g-4 mt-2">
+                    <div class="col-sm-6">
+                        <div class="d-flex align-items-start">
+                            <div style="min-width:36px;height:36px;background:var(--teal-light);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-right:0.75rem;margin-top:2px;">
+                                <i class="bi bi-clipboard2-pulse text-teal"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-1 text-navy" style="font-size:0.95rem;">Exercise Library</h6>
+                                <p class="text-muted small mb-0">Hundreds of exercises by diagnosis, phase, and difficulty.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="d-flex align-items-start">
+                            <div style="min-width:36px;height:36px;background:var(--teal-light);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-right:0.75rem;margin-top:2px;">
+                                <i class="bi bi-question-circle text-teal"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-1 text-navy" style="font-size:0.95rem;">Expert FAQ</h6>
+                                <p class="text-muted small mb-0">Answers from licensed PTs and MDs.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="d-flex align-items-start">
+                            <div style="min-width:36px;height:36px;background:var(--teal-light);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-right:0.75rem;margin-top:2px;">
+                                <i class="bi bi-geo-alt text-teal"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-1 text-navy" style="font-size:0.95rem;">Facility Finder</h6>
+                                <p class="text-muted small mb-0">Find PT clinics that accept your insurance.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="d-flex align-items-start">
+                            <div style="min-width:36px;height:36px;background:var(--teal-light);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-right:0.75rem;margin-top:2px;">
+                                <i class="bi bi-camera-video text-teal"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-1 text-navy" style="font-size:0.95rem;">Telehealth</h6>
+                                <p class="text-muted small mb-0">Virtual consultations with PTs.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+</section>
 
-    <div class="card">
-        <div class="card-body p-4">
-            <h3 class="text-navy">Disclaimer</h3>
-            <p class="text-muted small">The information provided on NOVA PT is for educational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. Always consult with a qualified healthcare provider before starting any exercise program, especially if you have had surgery or are experiencing significant pain. The exercises and information on this platform have been reviewed by licensed professionals, but individual results may vary.</p>
+<!-- Disclaimer -->
+<section class="py-5">
+    <div class="container" style="max-width:800px;">
+        <div class="card fade-up" style="border-left: 4px solid var(--gold);">
+            <div class="card-body p-4">
+                <h5 class="text-navy mb-3"><i class="bi bi-info-circle me-2 text-gold"></i>Disclaimer</h5>
+                <p class="text-muted small mb-0">The information provided on NOVA PT is for educational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. Always consult with a qualified healthcare provider before starting any exercise program, especially if you have had surgery or are experiencing significant pain. The exercises and information on this platform have been reviewed by licensed professionals, but individual results may vary.</p>
+            </div>
         </div>
     </div>
-</div>
+</section>
 {% endblock %}

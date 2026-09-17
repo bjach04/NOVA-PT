@@ -1,55 +1,76 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}My Profile — NOVA PT{% endblock %}
 
 {% block content %}
 <div class="profile-header mb-4">
     <div class="container text-center">
-        <i class="bi bi-person-circle" style="font-size: 4rem;"></i>
-        <h2 class="mt-2">{{ user.first_name }} {{ user.last_name }}</h2>
-        <p class="mb-0">@{{ user.username }}</p>
+        <div style="width:80px;height:80px;background:rgba(255,255,255,0.15);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:2rem;font-weight:700;color:#fff;margin-bottom:1rem;border:3px solid rgba(255,255,255,0.2);">
+            {{ user.first_name|make_list|first|upper|default:"?" }}
+        </div>
+        <h2 class="mt-1">{{ user.first_name }} {{ user.last_name }}</h2>
+        <p class="mb-0" style="color:rgba(255,255,255,0.7);">@{{ user.username }}</p>
     </div>
 </div>
 
 <div class="container" style="max-width: 700px;">
-    <div class="card">
+    <div class="card fade-up" style="margin-top:-2rem; position:relative; z-index:10; border:none; box-shadow:var(--shadow-lg);">
         <div class="card-body p-4">
-            <h5 class="text-navy mb-3">Profile Details</h5>
-            <table class="table table-borderless">
-                <tr>
-                    <td class="fw-semibold text-muted" style="width: 40%;">Email</td>
-                    <td>{{ user.email }}</td>
-                </tr>
-                <tr>
-                    <td class="fw-semibold text-muted">Diagnosis</td>
-                    <td>{{ profile.diagnosis|default:"Not set" }}</td>
-                </tr>
-                <tr>
-                    <td class="fw-semibold text-muted">PT Status</td>
-                    <td>{{ profile.get_pt_status_display }}</td>
-                </tr>
+            <h5 class="text-navy mb-4"><i class="bi bi-person me-2 text-teal"></i>Profile Details</h5>
+            <div class="row g-3">
+                <div class="col-sm-6">
+                    <div style="padding:1rem; background:var(--light-gray); border-radius:var(--radius-sm);">
+                        <div class="text-muted small fw-semibold text-uppercase" style="letter-spacing:0.05em; font-size:0.72rem;">Email</div>
+                        <div class="fw-semibold text-navy mt-1">{{ user.email }}</div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div style="padding:1rem; background:var(--light-gray); border-radius:var(--radius-sm);">
+                        <div class="text-muted small fw-semibold text-uppercase" style="letter-spacing:0.05em; font-size:0.72rem;">Diagnosis</div>
+                        <div class="fw-semibold text-navy mt-1">{{ profile.diagnosis|default:"Not set" }}</div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div style="padding:1rem; background:var(--light-gray); border-radius:var(--radius-sm);">
+                        <div class="text-muted small fw-semibold text-uppercase" style="letter-spacing:0.05em; font-size:0.72rem;">PT Status</div>
+                        <div class="fw-semibold text-navy mt-1">{{ profile.get_pt_status_display }}</div>
+                    </div>
+                </div>
                 {% if profile.current_facility %}
-                <tr>
-                    <td class="fw-semibold text-muted">Current Facility</td>
-                    <td>{{ profile.current_facility }}</td>
-                </tr>
+                <div class="col-sm-6">
+                    <div style="padding:1rem; background:var(--light-gray); border-radius:var(--radius-sm);">
+                        <div class="text-muted small fw-semibold text-uppercase" style="letter-spacing:0.05em; font-size:0.72rem;">Current Facility</div>
+                        <div class="fw-semibold text-navy mt-1">{{ profile.current_facility }}</div>
+                    </div>
+                </div>
                 {% endif %}
-                <tr>
-                    <td class="fw-semibold text-muted">Had Surgery</td>
-                    <td>{{ profile.had_surgery|yesno:"Yes,No" }}</td>
-                </tr>
+                <div class="col-sm-6">
+                    <div style="padding:1rem; background:var(--light-gray); border-radius:var(--radius-sm);">
+                        <div class="text-muted small fw-semibold text-uppercase" style="letter-spacing:0.05em; font-size:0.72rem;">Had Surgery</div>
+                        <div class="fw-semibold text-navy mt-1">{{ profile.had_surgery|yesno:"Yes,No" }}</div>
+                    </div>
+                </div>
                 {% if profile.surgery_date %}
-                <tr>
-                    <td class="fw-semibold text-muted">Surgery Date</td>
-                    <td>{{ profile.surgery_date }}</td>
-                </tr>
+                <div class="col-sm-6">
+                    <div style="padding:1rem; background:var(--light-gray); border-radius:var(--radius-sm);">
+                        <div class="text-muted small fw-semibold text-uppercase" style="letter-spacing:0.05em; font-size:0.72rem;">Surgery Date</div>
+                        <div class="fw-semibold text-navy mt-1">{{ profile.surgery_date }}</div>
+                    </div>
+                </div>
                 {% endif %}
-                <tr>
-                    <td class="fw-semibold text-muted">Pain Level</td>
-                    <td><span class="badge bg-teal">{{ profile.pain_level }} / 10</span></td>
-                </tr>
-            </table>
-            <a href="{% url 'accounts:questionnaire' %}" class="btn btn-teal">Update Questionnaire</a>
+                <div class="col-sm-6">
+                    <div style="padding:1rem; background:var(--light-gray); border-radius:var(--radius-sm);">
+                        <div class="text-muted small fw-semibold text-uppercase" style="letter-spacing:0.05em; font-size:0.72rem;">Pain Level</div>
+                        <div class="mt-1"><span class="badge bg-teal" style="font-size:0.85rem; padding:0.4rem 0.8rem;">{{ profile.pain_level }} / 10</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4">
+                <a href="{% url 'accounts:questionnaire' %}" class="btn btn-teal px-4">
+                    <i class="bi bi-pencil-square me-1"></i> Update Questionnaire
+                </a>
+            </div>
         </div>
     </div>
 </div>

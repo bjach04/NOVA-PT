@@ -1,31 +1,39 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Dashboard — NOVA PT{% endblock %}
 
 {% block content %}
-<div class="profile-header mb-4">
+<div class="page-header" style="border-radius: 0 0 var(--radius-xl) var(--radius-xl);">
     <div class="container">
-        <h2>Welcome back, {{ user.first_name|default:user.username }}!</h2>
-        <p class="mb-0">
-            <span class="badge bg-gold">{{ profile.diagnosis }}</span>
-            <span class="badge bg-teal ms-1">Pain Level: {{ profile.pain_level }}/10</span>
-            <span class="badge bg-light text-navy ms-1">{{ profile.get_pt_status_display }}</span>
-        </p>
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h2 class="mb-2">Welcome back, {{ user.first_name|default:user.username }}!</h2>
+                <div class="d-flex flex-wrap gap-2 mt-3">
+                    <span class="badge bg-gold">{{ profile.diagnosis }}</span>
+                    <span class="badge bg-teal">Pain Level: {{ profile.pain_level }}/10</span>
+                    <span class="badge bg-light text-navy">{{ profile.get_pt_status_display }}</span>
+                </div>
+            </div>
+            <div class="col-lg-4 text-lg-end mt-3 mt-lg-0">
+                <a href="{% url 'accounts:questionnaire' %}" class="btn btn-gold btn-sm px-4">Update Profile</a>
+            </div>
+        </div>
     </div>
 </div>
 
-<div class="container">
+<div class="container py-4">
     <div class="row g-4">
         <!-- Recommended Exercises -->
         <div class="col-lg-8">
-            <div class="d-flex justify-content-between align-items-center mb-3">
+            <div class="d-flex justify-content-between align-items-center mb-3 fade-up">
                 <h4 class="text-navy mb-0">Recommended Exercises</h4>
                 <a href="{% url 'exercises:list' %}" class="btn btn-sm btn-outline-secondary">View All</a>
             </div>
             {% if exercises %}
             <div class="row g-3">
                 {% for exercise in exercises %}
-                <div class="col-md-6">
+                <div class="col-md-6 fade-up">
                     <div class="card exercise-card h-100">
                         <div class="card-body">
                             <div class="mb-2">
@@ -34,20 +42,20 @@
                             </div>
                             <h6 class="card-title">{{ exercise.title }}</h6>
                             <p class="card-text text-muted small">{{ exercise.description|truncatewords:20 }}</p>
-                            <p class="mb-0 small"><strong>{{ exercise.sets }} sets × {{ exercise.reps }} reps</strong></p>
+                            <p class="mb-0 small"><strong>{{ exercise.sets }} sets x {{ exercise.reps }} reps</strong></p>
                         </div>
                         <div class="card-footer bg-transparent">
-                            <a href="{% url 'exercises:detail' exercise.pk %}" class="btn btn-sm btn-teal">View Details</a>
+                            <a href="{% url 'exercises:detail' exercise.pk %}" class="btn btn-sm btn-teal w-100">View Details</a>
                         </div>
                     </div>
                 </div>
                 {% endfor %}
             </div>
             {% else %}
-            <div class="card">
-                <div class="card-body text-center text-muted py-4">
-                    <i class="bi bi-clipboard2-pulse" style="font-size: 2rem;"></i>
-                    <p class="mt-2">No exercises found for your current profile. Check back soon!</p>
+            <div class="card fade-up">
+                <div class="card-body text-center text-muted py-5">
+                    <i class="bi bi-clipboard2-pulse" style="font-size: 2.5rem;"></i>
+                    <p class="mt-3 mb-0">No exercises found for your current profile. Check back soon!</p>
                 </div>
             </div>
             {% endif %}
@@ -55,10 +63,9 @@
 
         <!-- Sidebar -->
         <div class="col-lg-4">
-            <!-- Quick Links -->
-            <div class="card mb-3">
+            <div class="card mb-3 fade-up">
                 <div class="card-header bg-teal">
-                    <h6 class="mb-0 text-white">Quick Actions</h6>
+                    <h6 class="mb-0 text-white"><i class="bi bi-lightning-charge me-1"></i> Quick Actions</h6>
                 </div>
                 <div class="list-group list-group-flush">
                     <a href="{% url 'exercises:list' %}" class="list-group-item list-group-item-action">
@@ -79,10 +86,9 @@
                 </div>
             </div>
 
-            <!-- Relevant FAQs -->
-            <div class="card">
+            <div class="card fade-up">
                 <div class="card-header bg-teal">
-                    <h6 class="mb-0 text-white">FAQs for {{ profile.diagnosis }}</h6>
+                    <h6 class="mb-0 text-white"><i class="bi bi-chat-dots me-1"></i> FAQs for {{ profile.diagnosis }}</h6>
                 </div>
                 <div class="card-body">
                     {% if faqs %}
@@ -92,7 +98,7 @@
                         <p class="text-muted small mb-0">{{ faq.answer|truncatewords:25 }}</p>
                     </div>
                     {% endfor %}
-                    <a href="{% url 'faq:list' %}" class="btn btn-sm btn-outline-secondary mt-2">View All FAQs</a>
+                    <a href="{% url 'faq:list' %}" class="btn btn-sm btn-outline-secondary mt-2 w-100">View All FAQs</a>
                     {% else %}
                     <p class="text-muted small mb-0">No FAQs available for your diagnosis yet.</p>
                     {% endif %}

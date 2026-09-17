@@ -1,41 +1,65 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Telehealth — NOVA PT{% endblock %}
 
 {% block content %}
-<div class="container py-4">
-    <div class="row">
-        <div class="col-lg-8 mx-auto">
-            <div class="text-center mb-4">
-                <h2 class="text-navy">Telehealth Consultations</h2>
-                <p class="lead text-muted">Connect with a licensed physical therapist from the comfort of your home.</p>
-            </div>
+<section class="page-header text-center">
+    <div class="container">
+        <h1>Telehealth Consultations</h1>
+        <p>Connect with a licensed physical therapist from the comfort of your home.</p>
+    </div>
+</section>
 
-            <div class="card mb-4">
-                <div class="card-body p-4">
-                    <div class="row g-4 text-center mb-4">
-                        <div class="col-md-4">
-                            <i class="bi bi-camera-video text-teal" style="font-size: 2rem;"></i>
-                            <h6 class="mt-2 text-navy">Video Consultations</h6>
-                            <p class="text-muted small">Face-to-face sessions with your PT via secure video call.</p>
-                        </div>
-                        <div class="col-md-4">
-                            <i class="bi bi-clipboard2-check text-teal" style="font-size: 2rem;"></i>
-                            <h6 class="mt-2 text-navy">Exercise Review</h6>
-                            <p class="text-muted small">Get real-time feedback on your exercise form and technique.</p>
-                        </div>
-                        <div class="col-md-4">
-                            <i class="bi bi-calendar-check text-teal" style="font-size: 2rem;"></i>
-                            <h6 class="mt-2 text-navy">Flexible Scheduling</h6>
-                            <p class="text-muted small">Book appointments that fit your schedule, including evenings.</p>
-                        </div>
-                    </div>
+<div class="container py-5">
+    <div class="row g-5 mb-5">
+        <div class="col-lg-6 fade-left">
+            <img src="{% static 'images/hero-home-exercise.jpg' %}" alt="Patient exercising at home with guided session" class="split-image" style="height:350px;">
+        </div>
+        <div class="col-lg-6 d-flex align-items-center fade-right">
+            <div>
+                <span class="section-tag" style="display:inline-block;background:var(--teal-light);color:var(--teal);font-size:0.8rem;font-weight:600;padding:0.35rem 1rem;border-radius:50px;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:1rem;">Virtual Care</span>
+                <h2 class="text-navy" style="font-family:'Playfair Display',serif;font-size:2.2rem;">Recovery from Anywhere</h2>
+                <p class="text-muted" style="line-height:1.75;">Get face-to-face guidance, real-time exercise feedback, and personalized treatment plans without leaving home. Our telehealth platform makes expert PT care accessible and convenient.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4 mb-5">
+        <div class="col-md-4 fade-up stagger-1">
+            <div class="card feature-card h-100">
+                <div class="card-body">
+                    <div class="feature-icon"><i class="bi bi-camera-video"></i></div>
+                    <h5>Video Consultations</h5>
+                    <p>Face-to-face sessions with your PT via secure video call.</p>
                 </div>
             </div>
+        </div>
+        <div class="col-md-4 fade-up stagger-2">
+            <div class="card feature-card h-100">
+                <div class="card-body">
+                    <div class="feature-icon"><i class="bi bi-clipboard2-check"></i></div>
+                    <h5>Exercise Review</h5>
+                    <p>Get real-time feedback on your exercise form and technique.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 fade-up stagger-3">
+            <div class="card feature-card h-100">
+                <div class="card-body">
+                    <div class="feature-icon"><i class="bi bi-calendar-check"></i></div>
+                    <h5>Flexible Scheduling</h5>
+                    <p>Book appointments that fit your schedule, including evenings.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
-            <div class="card">
-                <div class="card-header bg-teal text-center">
-                    <h5 class="mb-0 text-white">Schedule Your Appointment</h5>
+    <div class="row">
+        <div class="col-lg-8 mx-auto fade-up">
+            <div class="card" style="border:none; box-shadow:var(--shadow-lg);">
+                <div class="card-header bg-teal text-center" style="padding:1.25rem;">
+                    <h5 class="mb-0 text-white"><i class="bi bi-calendar-plus me-2"></i>Schedule Your Appointment</h5>
                 </div>
                 <div class="card-body p-0">
                     <div class="calendly-embed">

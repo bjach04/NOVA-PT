@@ -1,29 +1,42 @@
 {% load static %}
-<footer class="bg-navy text-light mt-5 py-4">
+<footer class="footer-nova">
     <div class="container">
-        <div class="row">
-            <div class="col-md-4 mb-3">
-                <h5 class="text-gold">NOVA Physical Therapy & Solutions</h5>
-                <p class="text-light-muted">Personalized recovery tools to help you get back to doing what you love.</p>
+        <div class="row g-4">
+            <div class="col-lg-4 mb-3">
+                <div class="d-flex align-items-center mb-3">
+                    <img src="{% static 'images/logo.png' %}" alt="NOVA PT" height="36" class="me-2">
+                    <h5 class="mb-0">NOVA PT</h5>
+                </div>
+                <p style="color: rgba(255,255,255,0.5); font-size: 0.92rem; line-height: 1.7; max-width: 300px;">
+                    Personalized recovery tools to help you get back to doing what you love. Expert-reviewed exercises and resources.
+                </p>
             </div>
-            <div class="col-md-4 mb-3">
-                <h6 class="text-gold">Quick Links</h6>
-                <ul class="list-unstyled">
-                    <li><a href="{% url 'exercises:list' %}" class="text-light-muted text-decoration-none">Exercises</a></li>
-                    <li><a href="{% url 'faq:list' %}" class="text-light-muted text-decoration-none">FAQ</a></li>
-                    <li><a href="{% url 'finder:search' %}" class="text-light-muted text-decoration-none">Find a PT</a></li>
-                    <li><a href="{% url 'pages:telehealth' %}" class="text-light-muted text-decoration-none">Telehealth</a></li>
+            <div class="col-6 col-lg-2 mb-3">
+                <h6>Platform</h6>
+                <ul class="footer-links">
+                    <li><a href="{% url 'exercises:list' %}">Exercises</a></li>
+                    <li><a href="{% url 'faq:list' %}">FAQ</a></li>
+                    <li><a href="{% url 'finder:search' %}">Find a PT</a></li>
+                    <li><a href="{% url 'pages:telehealth' %}">Telehealth</a></li>
                 </ul>
             </div>
-            <div class="col-md-4 mb-3">
-                <h6 class="text-gold">About</h6>
-                <ul class="list-unstyled">
-                    <li><a href="{% url 'pages:about' %}" class="text-light-muted text-decoration-none">About NOVA PT</a></li>
-                    <li><a href="{% url 'pages:merch' %}" class="text-light-muted text-decoration-none">Merch</a></li>
+            <div class="col-6 col-lg-2 mb-3">
+                <h6>Company</h6>
+                <ul class="footer-links">
+                    <li><a href="{% url 'pages:about' %}">About</a></li>
+                    <li><a href="{% url 'pages:merch' %}">Merch</a></li>
                 </ul>
+            </div>
+            <div class="col-lg-4 mb-3">
+                <h6>Start Your Recovery</h6>
+                <p style="color: rgba(255,255,255,0.5); font-size: 0.9rem; line-height: 1.7;">
+                    Create a free account and get personalized exercise recommendations today.
+                </p>
+                <a href="{% url 'accounts:signup' %}" class="btn btn-gold btn-sm px-4">Get Started</a>
             </div>
         </div>
-        <hr class="border-secondary">
-        <p class="text-center text-light-muted mb-0">&copy; 2026 NOVA Physical Therapy & Solutions. All rights reserved.</p>
+        <div class="footer-bottom text-center">
+            <p>&copy; 2026 NOVA Physical Therapy & Solutions. All rights reserved.</p>
+        </div>
     </div>
 </footer>

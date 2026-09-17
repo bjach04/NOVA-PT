@@ -3,13 +3,18 @@
 {% block title %}FAQ — NOVA PT{% endblock %}
 
 {% block content %}
-<div class="container py-4">
-    <h2 class="text-navy mb-4">Frequently Asked Questions</h2>
+<section class="page-header text-center">
+    <div class="container">
+        <h1>Frequently Asked Questions</h1>
+        <p>Expert answers from licensed physical therapists and medical professionals.</p>
+    </div>
+</section>
 
+<div class="container py-5" style="max-width:850px;">
     <!-- Search & Filter -->
-    <div class="card mb-4">
-        <div class="card-body">
-            <form method="get" class="row g-3">
+    <div class="card mb-4 fade-up" style="border:none; box-shadow:var(--shadow-md);">
+        <div class="card-body p-3">
+            <form method="get" class="row g-3 align-items-end">
                 <div class="col-md-6">
                     <input type="text" name="q" class="form-control" placeholder="Search FAQs..."
                            value="{{ search }}">
@@ -25,7 +30,7 @@
                     </select>
                 </div>
                 <div class="col-md-2">
-                    <button type="submit" class="btn btn-teal w-100">Search</button>
+                    <button type="submit" class="btn btn-teal w-100"><i class="bi bi-search me-1"></i> Search</button>
                 </div>
             </form>
         </div>
@@ -35,7 +40,7 @@
     {% if faqs %}
     <div class="accordion" id="faqAccordion">
         {% for faq in faqs %}
-        <div class="accordion-item mb-2" style="border-radius: 8px; overflow: hidden;">
+        <div class="accordion-item mb-3 fade-up" style="border-radius: var(--radius-md) !important; box-shadow:var(--shadow-sm);">
             <h2 class="accordion-header">
                 <button class="accordion-button collapsed" type="button"
                         data-bs-toggle="collapse" data-bs-target="#faq-{{ faq.pk }}">
@@ -45,10 +50,10 @@
             </h2>
             <div id="faq-{{ faq.pk }}" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                 <div class="accordion-body">
-                    <p>{{ faq.answer }}</p>
-                    <div class="d-flex justify-content-between align-items-center mt-3">
+                    <p style="line-height:1.75;">{{ faq.answer }}</p>
+                    <div class="d-flex justify-content-between align-items-center mt-3 pt-3" style="border-top:1px solid var(--border-color);">
                         <small class="text-muted">
-                            <i class="bi bi-person-badge me-1"></i>Answered by {{ faq.answered_by }}
+                            <i class="bi bi-person-badge me-1 text-teal"></i>Answered by {{ faq.answered_by }}
                         </small>
                         {% if faq.diagnosis %}
                         <span class="badge bg-teal">{{ faq.diagnosis }}</span>
@@ -60,10 +65,12 @@
         {% endfor %}
     </div>
     {% else %}
-    <div class="card">
+    <div class="card fade-up" style="max-width:500px; margin:0 auto;">
         <div class="card-body text-center py-5">
-            <i class="bi bi-question-circle text-muted" style="font-size: 3rem;"></i>
-            <h5 class="mt-3 text-muted">No FAQs match your search</h5>
+            <div style="width:70px;height:70px;background:var(--teal-light);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;margin-bottom:1rem;">
+                <i class="bi bi-question-circle text-teal" style="font-size: 1.75rem;"></i>
+            </div>
+            <h5 class="text-navy mt-2">No FAQs match your search</h5>
             <p class="text-muted">Try different search terms or clear your filters.</p>
         </div>
     </div>

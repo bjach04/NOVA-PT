@@ -1,15 +1,15 @@
 {% load static %}
-<nav class="navbar navbar-expand-lg navbar-dark bg-navy">
+<nav class="navbar navbar-expand-lg navbar-dark navbar-nova fixed-top">
     <div class="container">
         <a class="navbar-brand d-flex align-items-center" href="{% url 'pages:home' %}">
-            <img src="{% static 'images/logo.png' %}" alt="NOVA PT" height="40" class="me-2">
-            <span class="fw-bold">NOVA PT</span>
+            <img src="{% static 'images/logo.png' %}" alt="NOVA PT" height="36" class="me-2">
+            <span>NOVA PT</span>
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav me-auto">
+            <ul class="navbar-nav me-auto ms-lg-4">
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'pages:home' %}">Home</a>
                 </li>
@@ -29,28 +29,32 @@
                     <a class="nav-link" href="{% url 'pages:merch' %}">Merch</a>
                 </li>
             </ul>
-            <ul class="navbar-nav">
+            <ul class="navbar-nav align-items-lg-center">
                 {% if user.is_authenticated %}
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                        <i class="bi bi-person-circle"></i> {{ user.username }}
+                    <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown">
+                        <div style="width:32px;height:32px;background:var(--teal);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:700;color:#fff;margin-right:0.5rem;">
+                            {{ user.username|make_list|first|upper }}
+                        </div>
+                        {{ user.username }}
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="{% url 'accounts:profile' %}">My Profile</a></li>
-                        <li><a class="dropdown-item" href="{% url 'accounts:questionnaire' %}">Questionnaire</a></li>
+                        <li><a class="dropdown-item" href="{% url 'accounts:profile' %}"><i class="bi bi-person me-2"></i>My Profile</a></li>
+                        <li><a class="dropdown-item" href="{% url 'accounts:questionnaire' %}"><i class="bi bi-clipboard2-pulse me-2"></i>Questionnaire</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="{% url 'accounts:logout' %}">Logout</a></li>
+                        <li><a class="dropdown-item text-danger" href="{% url 'accounts:logout' %}"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
                     </ul>
                 </li>
                 {% else %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'accounts:login' %}">Login</a>
+                    <a class="nav-link" href="{% url 'accounts:login' %}">Log In</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link btn btn-gold btn-sm ms-2 px-3" href="{% url 'accounts:signup' %}">Sign Up</a>
+                <li class="nav-item ms-lg-2">
+                    <a class="nav-link btn-nav-signup" href="{% url 'accounts:signup' %}">Sign Up Free</a>
                 </li>
                 {% endif %}
             </ul>
         </div>
     </div>
 </nav>
+<div style="height:72px;"></div>
